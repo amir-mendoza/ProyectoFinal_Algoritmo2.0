@@ -2,6 +2,7 @@ package com.mycompany.proyectofinal.algoritmo2.main;
 
 import com.mycompany.proyectofinal.algoritmo2.controller.InventarioController;
 import com.mycompany.proyectofinal.algoritmo2.model.Producto;
+import com.mycompany.proyectofinal.algoritmo2.util.Catalogos;
 
 import java.util.Scanner;
 
@@ -55,9 +56,11 @@ public class Main {
                     String nombre = sc.nextLine();
 
                     System.out.print("Categoría (0 a 4): ");
+                    Catalogos.mostrarCategorias();
                     int categoria = Integer.parseInt(sc.nextLine());
 
                     System.out.print("Proveedor (0 a 4): ");
+                    Catalogos.mostrarProveedores();
                     int proveedor = Integer.parseInt(sc.nextLine());
 
                     System.out.print("Stock inicial: ");
