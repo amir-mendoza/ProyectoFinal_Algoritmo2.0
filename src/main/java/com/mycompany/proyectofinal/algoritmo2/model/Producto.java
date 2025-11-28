@@ -1,15 +1,15 @@
 package com.mycompany.proyectofinal.algoritmo2.model;
 
+import com.mycompany.proyectofinal.algoritmo2.util.Catalogos;
+
 public class Producto {
     
-    // Atributos del producto
     private String codigo;
     private String nombre;
-    private int categoria;    // índice de categoría (ej: 0,1,2...)
-    private int proveedor;    // índice de proveedor (ej: 0,1,2...)
+    private int categoria;
+    private int proveedor;
     private int stock;
 
-    // Constructor
     public Producto(String codigo, String nombre, int categoria, int proveedor, int stock) {
         this.codigo = codigo;
         this.nombre = nombre;
@@ -18,7 +18,6 @@ public class Producto {
         this.stock = stock;
     }
 
-    // Getters y setters
     public String getCodigo() {
         return codigo;
     }
@@ -59,16 +58,20 @@ public class Producto {
         this.stock = stock;
     }
 
-    // Método para comparar códigos (evita duplicados)
     public boolean tieneCodigo(String otroCodigo) {
         if (otroCodigo == null) return false;
         return this.codigo.equalsIgnoreCase(otroCodigo.trim());
     }
 
-    // Mostrar producto bonito
+    // 🎯 MOSTRAR PRODUCTO BONITO (NOMBRE REAL DE CATEGORÍA Y PROVEEDOR)
     @Override
     public String toString() {
-        return String.format("[%s] %s | Cat:%d | Prov:%d | Stock:%d",
-                codigo, nombre, categoria, proveedor, stock);
+        return String.format("[%s] %s | Categoría: %s | Proveedor: %s | Stock: %d",
+                codigo,
+                nombre,
+                Catalogos.CATEGORIAS[categoria],
+                Catalogos.PROVEEDORES[proveedor],
+                stock
+        );
     }
 }
