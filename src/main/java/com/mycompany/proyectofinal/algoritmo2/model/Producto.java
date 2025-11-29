@@ -63,10 +63,10 @@ public class Producto {
         return this.codigo.equalsIgnoreCase(otroCodigo.trim());
     }
 
-    // 🎯 MOSTRAR PRODUCTO BONITO (NOMBRE REAL DE CATEGORÍA Y PROVEEDOR)
+    // MOSTRAR PRODUCTO BONITO (NOMBRE REAL DE CATEGORIA Y PROVEEDOR)
     @Override
     public String toString() {
-        return String.format("[%s] %s | Categoría: %s | Proveedor: %s | Stock: %d",
+        return String.format("[%s] %s | Categoria: %s | Proveedor: %s | Stock: %d",
                 codigo,
                 nombre,
                 Catalogos.CATEGORIAS[categoria],

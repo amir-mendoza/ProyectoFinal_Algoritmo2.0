@@ -69,10 +69,10 @@ public class ListaSimple {
 
     // Mostrar toda la lista
     public void mostrar() {
-        System.out.println("=== PRODUCTOS EN STOCK CRÍTICO ===");
+        System.out.println("=== PRODUCTOS EN STOCK CRITICO ===");
 
         if (cabeza == null) {
-            System.out.println("No hay productos en estado crítico.");
+            System.out.println("No hay productos en estado critico.");
             return;
         }
 

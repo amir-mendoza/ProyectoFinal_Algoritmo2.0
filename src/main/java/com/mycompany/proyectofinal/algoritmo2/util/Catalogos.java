@@ -14,21 +14,21 @@ public class Catalogos {
         "Alicorp",
         "Gloria",
         "San Fernando",
-        "Nestlé",
+        "Nestle",
         "PepsiCo"
     };
 
     public static void mostrarCategorias() {
-        System.out.println("Categorías:");
+        System.out.println("Categorias:");
         for (int i = 0; i < CATEGORIAS.length; i++) {
-            System.out.println(i + " → " + CATEGORIAS[i]);
+            System.out.println(i + " - " + CATEGORIAS[i]);
         }
     }
 
     public static void mostrarProveedores() {
         System.out.println("Proveedores:");
         for (int i = 0; i < PROVEEDORES.length; i++) {
-            System.out.println(i + " → " + PROVEEDORES[i]);
+            System.out.println(i + " - " + PROVEEDORES[i]);
         }
     }
 }

@@ -25,18 +25,18 @@ public class Main {
 
         while (opcion != 0) {
 
-            System.out.println("\n===== MENÚ DEL SUBSISTEMA DE INVENTARIO =========");
+            System.out.println("\n===== MENU DEL SUBSISTEMA DE INVENTARIO =========");
             System.out.println("1. Registrar producto");
             System.out.println("2. Buscar producto");
             System.out.println("3. Registrar entrada de stock");
             System.out.println("4. Registrar salida de stock");
-            System.out.println("5. Mostrar stock crítico");
+            System.out.println("5. Mostrar stock critico");
             System.out.println("6. Registrar pedido");
             System.out.println("7. Ver pedidos pendientes");
-            System.out.println("8. Mostrar stock por categoría y proveedor");
-            System.out.println("9. Ver últimos movimientos");
+            System.out.println("8. Mostrar stock por categoria y proveedor");
+            System.out.println("9. Ver ultimos movimientos");
             System.out.println("0. Salir");
-            System.out.print("Selecciona una opción: ");
+            System.out.print("Selecciona una opcion: ");
 
             try {
                 opcion = Integer.parseInt(sc.nextLine());
@@ -49,19 +49,29 @@ public class Main {
                 case 1 -> {
                     System.out.println("--- Registrar producto ---");
 
-                    System.out.print("Código: ");
+                    System.out.print("Codigo: ");
                     String codigo = sc.nextLine();
 
                     System.out.print("Nombre: ");
                     String nombre = sc.nextLine();
 
-                    System.out.print("Categoría (0 a 4): ");
+                    System.out.print("Categoria (0 a 4): ");
                     Catalogos.mostrarCategorias();
                     int categoria = Integer.parseInt(sc.nextLine());
 
                     System.out.print("Proveedor (0 a 4): ");
                     Catalogos.mostrarProveedores();
                     int proveedor = Integer.parseInt(sc.nextLine());
+
+                    if (categoria < 0 || categoria >= Catalogos.CATEGORIAS.length) {
+                        System.out.println("Categoria invalida. Debe estar entre 0 y " + (Catalogos.CATEGORIAS.length - 1));
+                        break;
+                    }
+
+                    if (proveedor < 0 || proveedor >= Catalogos.PROVEEDORES.length) {
+                        System.out.println("Proveedor invalido. Debe estar entre 0 y " + (Catalogos.PROVEEDORES.length - 1));
+                        break;
+                    }
 
                     System.out.print("Stock inicial: ");
                     int stock = Integer.parseInt(sc.nextLine());
@@ -71,13 +81,13 @@ public class Main {
                     if (ok) {
                         System.out.println("Producto registrado correctamente.");
                     } else {
-                        System.out.println("No se pudo registrar (código duplicado o sistema lleno).");
+                        System.out.println("No se pudo registrar (codigo duplicado o sistema lleno).");
                     }
                 }
 
                 case 2 -> {
                     System.out.println("--- Buscar producto ---");
-                    System.out.print("Código: ");
+                    System.out.print("Codigo: ");
                     String codigo = sc.nextLine();
 
                     Producto p = controller.buscarProducto(codigo);
@@ -91,7 +101,7 @@ public class Main {
 
                 case 3 -> {
                     System.out.println("--- Registrar entrada ---");
-                    System.out.print("Código del producto: ");
+                    System.out.print("Codigo del producto: ");
                     String codigo = sc.nextLine();
 
                     System.out.print("Cantidad a ingresar: ");
@@ -105,7 +115,7 @@ public class Main {
 
                 case 4 -> {
                     System.out.println("--- Registrar salida ---");
-                    System.out.print("Código del producto: ");
+                    System.out.print("Codigo del producto: ");
                     String codigo = sc.nextLine();
 
                     System.out.print("Cantidad a retirar: ");
@@ -118,7 +128,7 @@ public class Main {
                 }
 
                 case 5 -> {
-                    System.out.println("--- STOCK CRÍTICO ---");
+                    System.out.println("--- STOCK CRITICO ---");
                     controller.mostrarStockCritico();
                 }
 
@@ -128,7 +138,7 @@ public class Main {
                     System.out.print("ID Pedido: ");
                     String id = sc.nextLine();
 
-                    System.out.print("Código del producto: ");
+                    System.out.print("Codigo del producto: ");
                     String codigo = sc.nextLine();
 
                     System.out.print("Cantidad pedida: ");
@@ -142,7 +152,7 @@ public class Main {
                     System.out.println("--- Pedidos pendientes ---");
                     controller.mostrarPedidos();
 
-                    System.out.print("¿Atender siguiente pedido? (s/n): ");
+                    System.out.print("Atender siguiente pedido? (s/n): ");
                     String r = sc.nextLine();
 
                     if (r.equalsIgnoreCase("s")) {
@@ -151,14 +161,14 @@ public class Main {
                 }
 
                 case 8 -> {
-                    System.out.println("--- STOCK POR CATEGORÍA Y PROVEEDOR ---");
+                    System.out.println("--- STOCK POR CATEGORIA Y PROVEEDOR ---");
                     controller.mostrarStockPorCategorias();
                 }
 
                 case 9 -> {
-                    System.out.println("--- Últimos movimientos ---");
+                    System.out.println("--- Ultimos movimientos ---");
 
-                    System.out.print("¿Cuántos movimientos ver?: ");
+                    System.out.print("Cuantos movimientos ver?: ");
                     int n = Integer.parseInt(sc.nextLine());
 
                     controller.mostrarUltimosMovimientos(n);
@@ -166,7 +176,7 @@ public class Main {
 
                 case 0 -> System.out.println("Saliendo del sistema...");
 
-                default -> System.out.println("Opción inválida.");
+                default -> System.out.println("Opcion invalida.");
             }
         }
 

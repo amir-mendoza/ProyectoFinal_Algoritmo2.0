@@ -125,12 +125,19 @@ public class InventarioController {
     }
 
     public void atenderPedido() {
-        Pedido p = colaPedidos.dequeue();
-        if (p == null) {
+        if (colaPedidos.estaVacia()) {
             System.out.println("No hay pedidos pendientes.");
-        } else {
-            System.out.println("Atendiendo pedido: " + p);
+            return;
         }
+
+        Pedido pedido = colaPedidos.dequeue();
+        String codigo = pedido.getCodigoProducto();
+        int cantidad = pedido.getCantidad();
+
+        // Registrar salida de stock
+        registrarSalida(codigo, cantidad);
+
+        System.out.println("Pedido atendido: " + codigo + " | Cantidad despachada: " + cantidad);
     }
 
     /* =============================

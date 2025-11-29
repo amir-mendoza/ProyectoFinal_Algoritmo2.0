@@ -41,10 +41,10 @@ public class MatrizStock {
 
     // Mostrar la matriz completa
     public void mostrarMatriz() {
-        System.out.println("=== STOCK POR CATEGORÍA Y PROVEEDOR ===");
+        System.out.println("=== STOCK POR CATEGORIA Y PROVEEDOR ===");
 
         for (int i = 0; i < categorias; i++) {
-            System.out.print("Categoría " + i + ": ");
+            System.out.print("Categoria " + i + ": ");
             for (int j = 0; j < proveedores; j++) {
                 System.out.print(matriz[i][j] + "\t");
             }

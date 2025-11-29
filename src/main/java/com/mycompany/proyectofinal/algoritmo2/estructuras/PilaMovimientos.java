@@ -42,7 +42,7 @@ public class PilaMovimientos {
             return;
         }
 
-        System.out.println("Últimos " + n + " movimientos:");
+        System.out.println("Ultimos " + n + " movimientos:");
         int count = 0;
         for (int i = tope; i >= 0 && count < n; i--) {
             System.out.println(pila[i]);
