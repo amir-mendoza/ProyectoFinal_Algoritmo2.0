@@ -1,3 +1,4 @@
+
 package com.mycompany.proyectofinal.algoritmo2.estructuras;
 
 import com.mycompany.proyectofinal.algoritmo2.model.Producto;

@@ -1,3 +1,4 @@
+// Controlador que maneja productos, stock, movimientos y pedidos
 package com.mycompany.proyectofinal.algoritmo2.controller;
 
 import com.mycompany.proyectofinal.algoritmo2.model.Producto;
@@ -18,7 +19,7 @@ public class InventarioController {
     private PilaMovimientos pilaMovimientos;
     private ColaPedidos colaPedidos;
 
-    private final int UMBRAL_CRITICO = 5; // Valor base para stock crítico
+    private final int UMBRAL_CRITICO = 5;
 
     public InventarioController(int maxProductos, int categorias, int proveedores,
                                 int maxMovimientos, int maxPedidos) {
@@ -30,9 +31,7 @@ public class InventarioController {
         colaPedidos = new ColaPedidos(maxPedidos);
     }
 
-    /* =============================
-       REGISTRAR PRODUCTO
-       ============================= */
+    // Registrar un producto nuevo
     public boolean registrarProducto(String codigo, String nombre, int categoria, int proveedor, int stock) {
         Producto p = new Producto(codigo, nombre, categoria, proveedor, stock);
 
@@ -48,16 +47,12 @@ public class InventarioController {
         return true;
     }
 
-    /* =============================
-       BUSCAR PRODUCTO
-       ============================= */
+    // Buscar producto por código
     public Producto buscarProducto(String codigo) {
         return vectorProductos.buscarPorCodigo(codigo);
     }
 
-    /* =============================
-       REGISTRAR ENTRADA
-       ============================= */
+    // Registrar entrada al stock
     public boolean registrarEntrada(String codigo, int cantidad) {
 
         Producto prod = vectorProductos.buscarPorCodigo(codigo);
@@ -76,15 +71,13 @@ public class InventarioController {
         return true;
     }
 
-    /* =============================
-       REGISTRAR SALIDA
-       ============================= */
+    // Registrar salida del stock
     public boolean registrarSalida(String codigo, int cantidad) {
 
         Producto prod = vectorProductos.buscarPorCodigo(codigo);
         if (prod == null) return false;
 
-        if (prod.getStock() < cantidad) return false; // No alcanza stock
+        if (prod.getStock() < cantidad) return false;
 
         prod.setStock(prod.getStock() - cantidad);
 
@@ -99,31 +92,27 @@ public class InventarioController {
         return true;
     }
 
-    /* =============================
-       LISTA DE STOCK CRÍTICO
-       ============================= */
+    // Mostrar productos en stock crítico
     public void mostrarStockCritico() {
         listaCriticos.mostrar();
     }
 
-    /* =============================
-       MOVIMIENTOS
-       ============================= */
+    // Mostrar últimos movimientos del inventario
     public void mostrarUltimosMovimientos(int n) {
         pilaMovimientos.mostrarUltimos(n);
     }
 
-    /* =============================
-       PEDIDOS
-       ============================= */
+    // Registrar un pedido
     public void registrarPedido(String idPedido, String codigo, int cantidad) {
         colaPedidos.enqueue(new Pedido(idPedido, codigo, cantidad));
     }
 
+    // Mostrar pedidos pendientes
     public void mostrarPedidos() {
         colaPedidos.mostrar();
     }
 
+    // Atender un pedido y registrar salida
     public void atenderPedido() {
         if (colaPedidos.estaVacia()) {
             System.out.println("No hay pedidos pendientes.");
@@ -134,19 +123,17 @@ public class InventarioController {
         String codigo = pedido.getCodigoProducto();
         int cantidad = pedido.getCantidad();
 
-        // Registrar salida de stock
         registrarSalida(codigo, cantidad);
 
         System.out.println("Pedido atendido: " + codigo + " | Cantidad despachada: " + cantidad);
     }
 
-    /* =============================
-       MIS UTILIDADES
-       ============================= */
+    // Mostrar stock por categorías y proveedores
     public void mostrarStockPorCategorias() {
         matrizStock.mostrarMatriz();
     }
 
+    // Listar todos los productos registrados
     public void listarProductos() {
         vectorProductos.listar();
     }

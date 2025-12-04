@@ -2,44 +2,42 @@ package com.mycompany.proyectofinal.algoritmo2.estructuras;
 
 public class MatrizStock {
 
-    private int[][] matriz;         // matriz[categorias][proveedores]
+    private int[][] matriz;         // matriz de stock por categoria y proveedor
     private int categorias;
     private int proveedores;
 
-    // Constructor
+    // Constructor que crea la matriz y la inicia en cero
     public MatrizStock(int categorias, int proveedores) {
         this.categorias = categorias;
         this.proveedores = proveedores;
-
-        // Inicializar matriz en 0
         matriz = new int[categorias][proveedores];
     }
 
-    // Sumar al stock de una categoría y proveedor
+    // Sumar cantidad al stock de una posicion
     public void sumarStock(int categoria, int proveedor, int cantidad) {
         if (validarIndices(categoria, proveedor)) {
             matriz[categoria][proveedor] += cantidad;
         }
     }
 
-    // Restar al stock
+    // Restar cantidad del stock de una posicion
     public void restarStock(int categoria, int proveedor, int cantidad) {
         if (validarIndices(categoria, proveedor)) {
             matriz[categoria][proveedor] -= cantidad;
 
             if (matriz[categoria][proveedor] < 0) {
-                matriz[categoria][proveedor] = 0; // evitar negativos
+                matriz[categoria][proveedor] = 0; 
             }
         }
     }
 
-    // Validar índices para evitar errores
+    // Verificar que los indices esten dentro del rango
     private boolean validarIndices(int categoria, int proveedor) {
-        return  categoria >= 0 && categoria < categorias &&
-                proveedor >= 0 && proveedor < proveedores;
+        return categoria >= 0 && categoria < categorias &&
+               proveedor >= 0 && proveedor < proveedores;
     }
 
-    // Mostrar la matriz completa
+    // Mostrar todo el contenido de la matriz
     public void mostrarMatriz() {
         System.out.println("=== STOCK POR CATEGORIA Y PROVEEDOR ===");
 
@@ -52,7 +50,7 @@ public class MatrizStock {
         }
     }
 
-    // Getters (opcional)
+    // Obtener la matriz completa
     public int[][] getMatriz() {
         return matriz;
     }

@@ -1,3 +1,25 @@
+/*
+ * ============================================================
+ *  CLASE Main (Subsistema de Inventario)
+ * ------------------------------------------------------------
+ *  Esta clase contiene el MENÚ PRINCIPAL del sistema de
+ *  inventario. Desde aquí el usuario interactúa con el
+ *  InventarioController para:
+ *
+ *   ✔ Registrar productos
+ *   ✔ Buscar productos
+ *   ✔ Registrar entradas y salidas de stock
+ *   ✔ Mostrar stock crítico
+ *   ✔ Registrar pedidos (cola)
+ *   ✔ Ver pedidos pendientes y atenderlos
+ *   ✔ Mostrar stock por categoría y proveedor
+ *   ✔ Ver últimos movimientos (pila)
+ *
+ *  Main SOLO gestiona la interacción por consola.
+ *  Toda la lógica real está en el controlador y las estructuras.
+ * ============================================================
+ */
+
 package com.mycompany.proyectofinal.algoritmo2.main;
 
 import com.mycompany.proyectofinal.algoritmo2.controller.InventarioController;
